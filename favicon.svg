@@ -1,0 +1,31 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cloverGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#22c55e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#15803d;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Four-leaf clover -->
+  <g transform="translate(32, 32)">
+    <!-- Stem -->
+    <path d="M0,0 C2,10 5,20 2,28" stroke="#15803d" stroke-width="4" stroke-linecap="round" fill="none" />
+    
+    <!-- Leaves -->
+    <g transform="rotate(0)">
+      <path d="M0,0 C-12,-15 12,-15 0,0" fill="url(#cloverGrad)" stroke="#166534" stroke-width="1" />
+    </g>
+    <g transform="rotate(90)">
+      <path d="M0,0 C-12,-15 12,-15 0,0" fill="url(#cloverGrad)" stroke="#166534" stroke-width="1" />
+    </g>
+    <g transform="rotate(180)">
+      <path d="M0,0 C-12,-15 12,-15 0,0" fill="url(#cloverGrad)" stroke="#166534" stroke-width="1" />
+    </g>
+    <g transform="rotate(270)">
+      <path d="M0,0 C-12,-15 12,-15 0,0" fill="url(#cloverGrad)" stroke="#166534" stroke-width="1" />
+    </g>
+  </g>
+  
+  <!-- Little glint -->
+  <circle cx="20" cy="20" r="3" fill="white" opacity="0.4" />
+</svg>
