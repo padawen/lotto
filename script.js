@@ -1,19 +1,20 @@
-const tickets = [
-    [7, 19, 34, 56, 78],
-    [1, 12, 39, 45, 88],
-    [7, 9, 18, 26, 63],
-    [7, 9, 18, 41, 72],
-    [4, 16, 27, 52, 81],
-    [6, 21, 35, 49, 67],
-    [10, 24, 38, 55, 79],
-    [13, 29, 44, 58, 90],
-    [2, 17, 31, 63, 84],
-    [8, 26, 42, 71, 86]
-];
+let tickets = [];
 
 const ticketsList = document.getElementById('tickets-list');
 const inputs = document.querySelectorAll('.winning-input');
 const clearBtn = document.getElementById('clear-btn');
+
+// Load tickets from JSON file
+async function loadTickets() {
+    try {
+        const response = await fetch('tickets.json');
+        const data = await response.json();
+        tickets = data.tickets;
+        renderTickets();
+    } catch (error) {
+        console.error('Error loading tickets:', error);
+    }
+}
 
 function renderTickets() {
     const winningNumbers = Array.from(inputs)
@@ -79,5 +80,5 @@ clearBtn.addEventListener('click', () => {
     renderTickets();
 });
 
-// Initial render
-renderTickets();
+// Initial load and render
+loadTickets();
