@@ -18,7 +18,7 @@
 
 body {
     background-color: var(--bg-color);
-    background-image: 
+    background-image:
         radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
         radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
     color: var(--text-primary);
@@ -43,6 +43,7 @@ h1 {
     font-size: 2.5rem;
     font-weight: 700;
     background: var(--primary-gradient);
+    background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     margin-bottom: 8px;
@@ -129,8 +130,15 @@ input::-webkit-inner-spin-button {
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(10px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .ticket-numbers {
@@ -167,11 +175,275 @@ input::-webkit-inner-spin-button {
     background: rgba(255, 255, 255, 0.05);
     min-width: 60px;
     text-align: center;
+    transition: all 0.4s ease;
 }
 
 .match-count.winner {
     background: rgba(34, 197, 94, 0.2);
     color: var(--success-color);
+}
+
+/* 2 találat - kicsi öröm */
+.ticket-row.match-2 {
+    border-color: rgba(34, 197, 94, 0.4);
+    background: rgba(34, 197, 94, 0.08);
+    animation: gentle-bounce 2s ease-in-out infinite;
+}
+
+.ticket-row.match-2 .match-count {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.4), rgba(16, 185, 129, 0.4));
+    color: #22c55e;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(34, 197, 94, 0.2);
+}
+
+@keyframes gentle-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-2px);
+    }
+}
+
+/* 3 találat - megnagyobb */
+.ticket-row.match-3 {
+    border-color: rgba(251, 191, 36, 0.6);
+    background: rgba(251, 191, 36, 0.12);
+    box-shadow: 0 0 25px rgba(251, 191, 36, 0.3);
+    animation: pulse-3 1.8s ease-in-out infinite, gentle-rotate 4s ease-in-out infinite;
+}
+
+.ticket-row.match-3 .match-count {
+    background: linear-gradient(135deg, #fbbf24, #f59e0b);
+    color: #1f2937;
+    font-size: 1.15rem;
+    font-weight: 800;
+    box-shadow: 0 4px 15px rgba(251, 191, 36, 0.5);
+    animation: bounce-small 1s ease-in-out infinite;
+}
+
+@keyframes pulse-3 {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 25px rgba(251, 191, 36, 0.3);
+    }
+
+    50% {
+        transform: scale(1.02);
+        box-shadow: 0 0 35px rgba(251, 191, 36, 0.5);
+    }
+}
+
+@keyframes gentle-rotate {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(0.5deg);
+    }
+
+    75% {
+        transform: rotate(-0.5deg);
+    }
+}
+
+@keyframes bounce-small {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+/* 4 találat - még nagyobb */
+.ticket-row.match-4 {
+    border-color: rgba(249, 115, 22, 0.8);
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.15), rgba(234, 88, 12, 0.15));
+    box-shadow: 0 0 35px rgba(249, 115, 22, 0.5), 0 0 70px rgba(249, 115, 22, 0.3);
+    animation: pulse-glow-4 1.2s ease-in-out infinite, strong-shake 2s ease-in-out infinite;
+    transform: scale(1.03);
+    z-index: 10;
+}
+
+.ticket-row.match-4 .match-count {
+    background: linear-gradient(135deg, #f97316, #ea580c);
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 900;
+    box-shadow: 0 8px 25px rgba(249, 115, 22, 0.7);
+    animation: bounce-4 0.8s ease-in-out infinite;
+}
+
+@keyframes pulse-glow-4 {
+
+    0%,
+    100% {
+        box-shadow: 0 0 35px rgba(249, 115, 22, 0.5), 0 0 70px rgba(249, 115, 22, 0.3);
+        transform: scale(1.03);
+    }
+
+    50% {
+        box-shadow: 0 0 50px rgba(249, 115, 22, 0.7), 0 0 100px rgba(249, 115, 22, 0.4);
+        transform: scale(1.05);
+    }
+}
+
+@keyframes strong-shake {
+
+    0%,
+    100% {
+        transform: rotate(0deg) scale(1.03);
+    }
+
+    25% {
+        transform: rotate(0.5deg) scale(1.03);
+    }
+
+    75% {
+        transform: rotate(-0.5deg) scale(1.03);
+    }
+}
+
+@keyframes bounce-4 {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* 5 találat - JACKPOT! LEGNAGYOBB! */
+.ticket-row.match-5 {
+    border: 2px solid;
+    border-image: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080) 1;
+    background: linear-gradient(135deg, rgba(255, 0, 128, 0.15), rgba(255, 140, 0, 0.15), rgba(64, 224, 208, 0.15));
+    box-shadow:
+        0 0 40px rgba(255, 0, 128, 0.6),
+        0 0 80px rgba(255, 140, 0, 0.4),
+        0 0 120px rgba(64, 224, 208, 0.3),
+        inset 0 0 30px rgba(255, 255, 255, 0.1);
+    animation: jackpot-celebration 1s ease-in-out infinite, rainbow-border 3s linear infinite;
+    transform: scale(1.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.ticket-row.match-5::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: shine 2s linear infinite;
+}
+
+.ticket-row.match-5 .match-count {
+    background: linear-gradient(135deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
+    background-size: 300% 300%;
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 30px rgba(255, 0, 128, 0.8);
+    animation: rainbow-bg 2s ease infinite, mega-bounce 0.6s ease-in-out infinite;
+}
+
+.ticket-row.match-5 .match-count::after {
+    content: ' 🎉';
+    animation: spin 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes jackpot-celebration {
+
+    0%,
+    100% {
+        transform: scale(1.05);
+    }
+
+    25% {
+        transform: scale(1.07) rotate(0.5deg);
+    }
+
+    75% {
+        transform: scale(1.07) rotate(-0.5deg);
+    }
+}
+
+@keyframes rainbow-border {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+@keyframes rainbow-bg {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes shine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+@keyframes mega-bounce {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-5px) scale(1.05);
+    }
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Responsive adjustments */
@@ -180,11 +452,13 @@ input::-webkit-inner-spin-button {
         width: 45px;
         height: 45px;
     }
+
     .number-ball {
         width: 32px;
         height: 32px;
         font-size: 0.85rem;
     }
+
     .ticket-numbers {
         gap: 5px;
     }
