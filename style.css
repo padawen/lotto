@@ -1,12 +1,12 @@
 :root {
-    --primary-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-    --bg-color: #0f172a;
-    --card-bg: rgba(30, 41, 59, 0.7);
+    --primary-gradient: linear-gradient(135deg, #10b981 0%, #84cc16 100%);
+    --bg-color: #000000;
+    --card-bg: rgba(20, 20, 20, 0.8);
     --glass-border: rgba(255, 255, 255, 0.1);
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --accent-color: #fbbf24;
-    --success-color: #22c55e;
+    --text-primary: #f0fdf4;
+    --text-secondary: #a7f3d0;
+    --accent-color: #34d399;
+    --success-color: #4ade80;
     --font-main: 'Outfit', sans-serif;
 }
 
@@ -19,8 +19,8 @@
 body {
     background-color: var(--bg-color);
     background-image:
-        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.15) 0px, transparent 50%),
-        radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.15) 0px, transparent 50%);
+        radial-gradient(at 0% 0%, rgba(16, 185, 129, 0.15) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(132, 204, 22, 0.15) 0px, transparent 50%);
     color: var(--text-primary);
     font-family: var(--font-main);
     min-height: 100vh;
@@ -52,6 +52,39 @@ h1 {
 .subtitle {
     color: var(--text-secondary);
     font-size: 0.95rem;
+}
+
+.lotto-type-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.toggle-group {
+    display: flex;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 4px;
+    border-radius: 14px;
+    border: 1px solid var(--glass-border);
+}
+
+.toggle-btn {
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+}
+
+.toggle-btn.active {
+    background: var(--primary-gradient);
+    color: white;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .winning-numbers-section {
@@ -86,8 +119,8 @@ h1 {
 }
 
 .winning-input:focus {
-    border-color: #6366f1;
-    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    border-color: #10b981;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
     transform: translateY(-2px);
 }
 
@@ -100,14 +133,16 @@ input::-webkit-inner-spin-button {
 
 #clear-btn {
     width: 100%;
-    padding: 12px;
-    border-radius: 12px;
+    padding: 16px;
+    border-radius: 14px;
     border: none;
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-secondary);
-    font-weight: 600;
+    font-weight: 700;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.3s ease;
+    margin-top: 10px;
 }
 
 #clear-btn:hover {
@@ -163,7 +198,7 @@ input::-webkit-inner-spin-button {
 .number-ball.match {
     background: var(--primary-gradient);
     border-color: transparent;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
     transform: scale(1.1);
 }
 
@@ -329,11 +364,13 @@ input::-webkit-inner-spin-button {
     }
 }
 
-/* 5 találat - JACKPOT! LEGNAGYOBB! */
-.ticket-row.match-5 {
-    border: 2px solid;
-    border-image: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080) 1;
-    background: linear-gradient(135deg, rgba(255, 0, 128, 0.15), rgba(255, 140, 0, 0.15), rgba(64, 224, 208, 0.15));
+/* 5 és 6 találat - JACKPOT! LEGNAGYOBB! */
+.ticket-row.match-5,
+.ticket-row.match-6 {
+    border: 2px solid transparent;
+    background:
+        linear-gradient(var(--card-bg), var(--card-bg)) padding-box,
+        linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0, #ff0080) border-box;
     box-shadow:
         0 0 40px rgba(255, 0, 128, 0.6),
         0 0 80px rgba(255, 140, 0, 0.4),
@@ -345,7 +382,8 @@ input::-webkit-inner-spin-button {
     overflow: hidden;
 }
 
-.ticket-row.match-5::before {
+.ticket-row.match-5::before,
+.ticket-row.match-6::before {
     content: '';
     position: absolute;
     top: -50%;
@@ -356,7 +394,8 @@ input::-webkit-inner-spin-button {
     animation: shine 2s linear infinite;
 }
 
-.ticket-row.match-5 .match-count {
+.ticket-row.match-5 .match-count,
+.ticket-row.match-6 .match-count {
     background: linear-gradient(135deg, #ff0080, #ff8c00, #40e0d0, #ff0080);
     background-size: 300% 300%;
     color: white;
@@ -368,7 +407,8 @@ input::-webkit-inner-spin-button {
     animation: rainbow-bg 2s ease infinite, mega-bounce 0.6s ease-in-out infinite;
 }
 
-.ticket-row.match-5 .match-count::after {
+.ticket-row.match-5 .match-count::after,
+.ticket-row.match-6 .match-count::after {
     content: ' 🎉';
     animation: spin 2s linear infinite;
     display: inline-block;
@@ -447,19 +487,30 @@ input::-webkit-inner-spin-button {
 }
 
 /* Responsive adjustments */
-@media (max-width: 400px) {
+@media (max-width: 450px) {
     .winning-input {
-        width: 45px;
-        height: 45px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
     }
 
     .number-ball {
-        width: 32px;
-        height: 32px;
-        font-size: 0.85rem;
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .ticket-row {
+        padding: 12px 15px;
     }
 
     .ticket-numbers {
-        gap: 5px;
+        gap: 4px;
+    }
+
+    .match-count {
+        min-width: 50px;
+        font-size: 0.8rem;
+        padding: 3px 8px;
     }
 }
